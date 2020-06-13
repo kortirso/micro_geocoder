@@ -16,10 +16,22 @@ describe Api::V1 do
   end
 
   context 'GET /api/v1/geocode' do
+    before { get "/api/v1/geocode?city=#{city}" }
+
+    context 'for invalid city' do
+      let(:city) { CGI.escape 'Missing' }
+
+      it 'returns success status' do
+        expect(last_response.status).to eq(404)
+      end
+
+      it 'and returns coordinates' do
+        expect(response_body['errors']).to eq [{ 'detail' => 'Geocoding error' }]
+      end
+    end
+
     context 'for valid city' do
       let(:city) { CGI.escape 'City 17' }
-
-      before { get "/api/v1/geocode?city=#{city}" }
 
       it 'returns success status' do
         expect(last_response.status).to eq(200)

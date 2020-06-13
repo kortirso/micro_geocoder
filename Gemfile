@@ -19,9 +19,6 @@ gem 'puma', '~> 4.3.5'
 # serialization
 gem 'fast_jsonapi', '~> 1.5'
 
-# I18n
-gem 'i18n', '~> 1.8.2'
-
 # Config
 gem 'config', '~> 2.2.1'
 

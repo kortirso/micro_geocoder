@@ -22,7 +22,7 @@ module Api
       if coordinates.present?
         { coordinates: coordinates }
       else
-        ErrorSerializer.from_messages('Geocoding error')
+        error!(ErrorSerializer.from_messages('Geocoding error'), 404)
       end
     end
   end
