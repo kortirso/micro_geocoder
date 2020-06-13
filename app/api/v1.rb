@@ -17,7 +17,7 @@ module Api
       requires :city, type: String, desc: 'City name'
     end
     get 'geocode' do
-      coordinates = Geocoder.geocode(params[:city])
+      coordinates = Geocoder.geocode(CGI.unescape(params[:city]))
 
       if coordinates.present?
         { coordinates: coordinates }

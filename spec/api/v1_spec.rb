@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'cgi'
-
 describe Api::V1 do
   context 'GET /api/v1' do
     before { get '/api/v1' }
