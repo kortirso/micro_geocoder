@@ -25,7 +25,7 @@ describe Api::V1 do
         expect(last_response.status).to eq(404)
       end
 
-      it 'and returns coordinates' do
+      it 'and returns error' do
         expect(response_body['errors']).to eq [{ 'detail' => 'Geocoding error' }]
       end
     end
