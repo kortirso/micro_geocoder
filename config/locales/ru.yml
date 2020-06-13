@@ -1,0 +1,12 @@
+ru:
+  dry_validation:
+    errors:
+      rules:
+        name:
+          filled?: Имя не может быть пустым
+        email:
+          filled?: Email не может быть пустым
+          is_exist: Пользователь с таким email уже существует
+        password:
+          filled?: Пароль не может быть пустой
+          is_too_short: Минимальная длина пароля - 8 символов
