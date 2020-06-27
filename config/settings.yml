@@ -1,2 +1,4 @@
 data:
   path: /db/data/city.csv
+rammitmq:
+  consumer_pool: 10

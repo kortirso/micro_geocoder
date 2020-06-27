@@ -10,9 +10,6 @@ gem 'rack', '~> 2.1.3'
 # rake
 gem 'rake', '~> 13.0.1'
 
-# serialization
-gem 'fast_jsonapi', '~> 1.5'
-
 # Config
 gem 'config', '~> 2.2.1'
 
