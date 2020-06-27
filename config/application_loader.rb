@@ -16,7 +16,6 @@ module ApplicationLoader
   end
 
   def require_app
-    require_file 'app/api/v1'
     require_file 'config/application'
     require_dir 'app'
   end
