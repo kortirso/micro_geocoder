@@ -18,9 +18,8 @@ module AdsService
     end
 
     def start
-      @reply_queue.subscribe do |delivery_info, properties, payload|
-        if properties.fetch(:correlation_id, nil) == @correlation_id
-          puts 'unlocked'
+      @reply_queue.subscribe do |_delivery_info, properties, _payload|
+        if properties[:correlation_id] == @correlation_id
           @lock.synchronize { @condition.signal }
         end
       end
