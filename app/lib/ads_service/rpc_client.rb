@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
+require 'dry/initializer'
 require_relative 'rpc_api'
 
 module AdsService
   class RpcClient
-    expend Dry::Initializer[undefined: false]
+    extend Dry::Initializer[undefined: false]
     include RpcApi
 
     option :queue, default: proc { create_queue }
@@ -19,6 +20,7 @@ module AdsService
     def start
       @reply_queue.subscribe do |delivery_info, properties, payload|
         if properties.fetch(:correlation_id, nil) == @correlation_id
+          puts 'unlocked'
           @lock.synchronize { @condition.signal }
         end
       end

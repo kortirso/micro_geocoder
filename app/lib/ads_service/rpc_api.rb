@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-reuqire 'securerandom'
+require 'securerandom'
 
 module AdsService
   module RpcApi

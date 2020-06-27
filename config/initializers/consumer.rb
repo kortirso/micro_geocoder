@@ -5,7 +5,9 @@ queue = channel.queue('geocoding', durable: true)
 
 queue.subscribe(manual_ack: true) do |delivery_info, properties, payload|
   payload = JSON.parse(payload)
+  puts payload.inspect
   coordinates = Geocoder.geocode(payload[:city])
+  puts coordinates.inspect
 
   if coordinates.present?
     client = AdsService::RpcClient.fetch
