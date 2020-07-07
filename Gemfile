@@ -16,6 +16,10 @@ gem 'bunny', '~> 2.15.0'
 # serialization
 gem 'fast_jsonapi', '~> 1.5'
 
+# http client
+gem 'faraday', '~> 1.0.1'
+gem 'faraday_middleware', '~> 1.0.0'
+
 group :development do
   gem 'rubocop', '~> 0.85.0', require: false
   gem 'rubocop-performance', require: false

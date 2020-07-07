@@ -3,14 +3,12 @@
 channel = RabbitMq.consumer_channel
 queue = channel.queue('geocoding', durable: true)
 
-queue.subscribe(manual_ack: true) do |delivery_info, _properties, payload|
+queue.subscribe(manual_ack: true) do |delivery_info, properties, payload|
   payload = JSON.parse(payload)
-  coordinates = Geocoder.geocode(payload[:city])
+  coordinates = Geocoder.geocode(payload['city'])
 
-  if coordinates.present?
-    client = AdsService::RpcClient.fetch
-    client.update_coordinates(payload['id'], coordinates)
-  end
+  client = AdsService::Client.new
+  client.update_coordinates(payload['id'], coordinates, properties[:correlation_id])
 
   channel.ack(delivery_info.delivery_tag)
 end
