@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Application
+class Application < Grape::API
+  mount ::Api::V1
+
   def self.root
     File.expand_path('..', __dir__)
   end
