@@ -11,7 +11,7 @@ gem 'grape', '~> 1.3.3'
 gem 'rack', '~> 2.1.4'
 
 # web server
-gem 'puma', '~> 4.3.5'
+gem 'puma', '~> 4.3.8'
 
 # Config
 gem 'config', '~> 2.2.1'
